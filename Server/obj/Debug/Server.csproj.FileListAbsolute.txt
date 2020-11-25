@@ -1,0 +1,9 @@
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Server\obj\Debug\Server.csprojAssemblyReference.cache
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Server\obj\Debug\Server.Properties.Resources.resources
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Server\obj\Debug\Server.csproj.GenerateResource.cache
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Server\bin\Debug\Server.exe.config
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Server\bin\Debug\Server.exe
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Server\bin\Debug\Server.pdb
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Server\obj\Debug\Server.exe
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Server\obj\Debug\Server.pdb
