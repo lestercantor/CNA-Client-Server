@@ -5,3 +5,5 @@ C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applicatio
 C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
 C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Client\obj\Debug\Client.exe
 C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Client\obj\Debug\Client.pdb
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Client\obj\Debug\Client.ClientForm.resources
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Client\obj\Debug\Client.csproj.GenerateResource.cache

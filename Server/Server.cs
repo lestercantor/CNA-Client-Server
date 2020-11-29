@@ -15,7 +15,7 @@ namespace Server
     class Server
     {
         private TcpListener tcpListener;
-        private ConcurrentBag<Client> clients;
+        private ConcurrentDictionary<int, Client> clients;
         public Server(string ipAddress, int port)
         {
             tcpListener = new TcpListener(IPAddress.Parse(ipAddress), port);
@@ -23,17 +23,21 @@ namespace Server
 
         public void Start()
         {
-            clients = new ConcurrentBag<Client>();
+            clients = new ConcurrentDictionary<int, Client>();
+            int clientIndex = 0;
             tcpListener.Start();
 
             while(true)
             {
-                Socket localSocket = tcpListener.AcceptSocket();
-                Console.WriteLine("Connection accepted");
+                int index = clientIndex;
+                clientIndex++;
 
-                Client _client = new Client(localSocket);
-                clients.Add(_client);
-                Thread thread = new Thread(() => { ClientMethod(_client); });
+                Socket socket = tcpListener.AcceptSocket();
+
+                Client client = new Client(socket);
+                clients.TryAdd(index, client);
+
+                Thread thread = new Thread(() => { ClientMethod(index); });
                 thread.Start();
             }
 
@@ -44,26 +48,28 @@ namespace Server
         {
             tcpListener.Stop();
         }
-        private void ClientMethod(Client client)
+        private void ClientMethod(int index)
         {
             string receivedMessage;
 
-            client.Send("You have connected to the server");
+            clients[index].Send("You have connected to the server");
 
-            while ((receivedMessage = client.Read()) != null)
+            while ((receivedMessage = clients[index].Read()) != null)
             {
                 if(receivedMessage.ToLower() == "bye")
                 {
-                    client.Send("Goodbye");
+                    clients[index].Send("Goodbye");
                     break;
                 }
                 else
                 {
-                    client.Send(GetReturnMessage(receivedMessage));
+                    clients[index].Send(GetReturnMessage(receivedMessage));
                 }
             };
 
-            clients.TryTake(out client);
+            clients[index].Close();
+            Client c;
+            clients.TryRemove(index, out c);
         }
         private static string GetReturnMessage(string code)
         {

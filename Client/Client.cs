@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
@@ -9,12 +10,14 @@ using System.IO;
 
 namespace Client
 {
-    class Client
+    public class Client
     {
         private TcpClient tcpClient;
         private NetworkStream stream;
         private StreamWriter writer;
         private StreamReader reader;
+
+        private ClientForm clientForm;
 
         public Client()
         {
@@ -45,25 +48,40 @@ namespace Client
                 throw new Exception();
             }
 
-            string userInput;
-            ProcessServerResponse();
+            //string userInput;
+            //ProcessServerResponse();
 
-            while ((userInput = Console.ReadLine()) != null)
-            {
-                writer.WriteLine(userInput);
-                writer.Flush();
-                ProcessServerResponse();
+            //while ((userInput = Console.ReadLine()) != null)
+            //{
+            //    writer.WriteLine(userInput);
+            //    writer.Flush();
+            //    ProcessServerResponse();
 
-                if (userInput.ToLower() == "bye")
-                    break;
-            }
+            //    if (userInput.ToLower() == "bye")
+            //        break;
+            //}
+
+            clientForm = new ClientForm(this);
+
+            Thread thread = new Thread(() => { ProcessServerResponse(); });
+            thread.Start();
+
+            clientForm.ShowDialog();
 
             tcpClient.Close();
         }
         private void ProcessServerResponse()
         {
-            Console.WriteLine("Server says: " + reader.ReadLine());
-            Console.WriteLine();
+            while (reader.ReadLine() != null)
+            {
+                Console.WriteLine("Server says: " + reader.ReadLine());
+                Console.WriteLine();
+            }
+        }
+        public void SendMessage(string message)
+        {
+            writer.WriteLine(message);
+            writer.Flush();
         }
     }
 }
