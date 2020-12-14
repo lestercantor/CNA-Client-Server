@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using Packets;
 
 namespace Client
 {
@@ -14,14 +16,19 @@ namespace Client
     {
         private TcpClient tcpClient;
         private NetworkStream stream;
-        private StreamWriter writer;
-        private StreamReader reader;
+        //private StreamWriter writer;
+        //private StreamReader reader;
+
+        private BinaryFormatter _formatter;
+        private BinaryReader _reader;
+        private BinaryWriter _writer;
 
         private ClientForm clientForm;
 
         public Client()
         {
             tcpClient = new TcpClient();
+            _formatter = new BinaryFormatter();
         }
         public bool Connect(string ipAddress, int port)
         {
@@ -30,8 +37,8 @@ namespace Client
                 tcpClient.Connect(ipAddress, port);
                 stream = tcpClient.GetStream();
 
-                reader = new StreamReader(stream, Encoding.UTF8);
-                writer = new StreamWriter(stream, Encoding.UTF8);
+                _reader = new BinaryReader(stream, Encoding.UTF8);
+                _writer = new BinaryWriter(stream, Encoding.UTF8);
 
                 return true;
             }
@@ -68,20 +75,36 @@ namespace Client
 
             clientForm.ShowDialog();
 
-            tcpClient.Close();
+            if (!tcpClient.Connected)
+            {
+                tcpClient.Close();
+                thread.Abort();
+            }
+                //tcpClient.Close();
+
         }
         private void ProcessServerResponse()
         {
-            while (reader.ReadLine() != null)
+            int numOfBytes;
+            while ((numOfBytes = _reader.ReadInt32()) != 0)
             {
-                Console.WriteLine("Server says: " + reader.ReadLine());
+                byte[] buffer = _reader.ReadBytes(numOfBytes);
+                MemoryStream memStream = new MemoryStream(buffer);
+
+                Console.WriteLine("Server says: " + _formatter.Deserialize(memStream));
                 Console.WriteLine();
             }
         }
-        public void SendMessage(string message)
+        public void SendMessage(Packet message)
         {
-            writer.WriteLine(message);
-            writer.Flush();
+            MemoryStream memStream = new MemoryStream();
+
+            _formatter.Serialize(memStream, message);
+            byte[] buffer = memStream.GetBuffer();
+
+            _writer.Write(buffer.Length);
+            _writer.Write(buffer);
+            _writer.Flush();
         }
     }
 }

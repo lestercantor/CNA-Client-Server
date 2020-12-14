@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections.Concurrent;
+using Packets;
 
 namespace Server
 {
@@ -50,27 +51,30 @@ namespace Server
         }
         private void ClientMethod(int index)
         {
-            string receivedMessage;
-
-            clients[index].Send("You have connected to the server");
-
-            while ((receivedMessage = clients[index].Read()) != null)
+            try
             {
-                if(receivedMessage.ToLower() == "bye")
+                Packet receivedPacket;
+                while ((receivedPacket = clients[index].Read()) != null)
                 {
-                    clients[index].Send("Goodbye");
-                    break;
+                    switch (receivedPacket.packetType)
+                    {
+                        case PacketType.CHAT_MESSAGE:
+                            ChatMessagePacket chatPacket = (ChatMessagePacket)receivedPacket;
+                            clients[index].Send(chatPacket);
+                            break;
+                    }
                 }
-                else
-                {
-                    clients[index].Send(GetReturnMessage(receivedMessage));
-                }
-            };
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e);
+            }
 
             clients[index].Close();
             Client c;
             clients.TryRemove(index, out c);
         }
+
         private static string GetReturnMessage(string code)
         {
             string message;

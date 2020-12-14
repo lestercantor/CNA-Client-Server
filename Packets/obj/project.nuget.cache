@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "r5BOoc0cv/EIKWv7jez0eeAP0H0nT9IZUErd3VoGJj8N8tPLLeppJZrcAU729fRzwzP+WHtMo1XLjeEJ3vra1Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\leste\\OneDrive - Staffordshire University\\Concurrent Network Applications\\CNA-Client-Server\\Packets\\Packets.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\leste\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\leste\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

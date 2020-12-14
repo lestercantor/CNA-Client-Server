@@ -7,3 +7,6 @@ C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applicatio
 C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Server\bin\Debug\Server.pdb
 C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Server\obj\Debug\Server.exe
 C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Server\obj\Debug\Server.pdb
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Server\bin\Debug\Packets.dll
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Server\bin\Debug\Packets.pdb
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Server\obj\Debug\Server.csproj.CopyComplete
