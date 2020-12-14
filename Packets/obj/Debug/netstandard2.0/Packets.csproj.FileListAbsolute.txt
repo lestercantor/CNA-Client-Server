@@ -1,0 +1,9 @@
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Packets\bin\Debug\netstandard2.0\Packets.deps.json
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Packets\bin\Debug\netstandard2.0\Packets.dll
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Packets\bin\Debug\netstandard2.0\Packets.pdb
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Packets\obj\Debug\netstandard2.0\Packets.csprojAssemblyReference.cache
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Packets\obj\Debug\netstandard2.0\Packets.AssemblyInfoInputs.cache
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Packets\obj\Debug\netstandard2.0\Packets.AssemblyInfo.cs
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Packets\obj\Debug\netstandard2.0\Packets.csproj.CoreCompileInputs.cache
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Packets\obj\Debug\netstandard2.0\Packets.dll
+C:\Users\leste\OneDrive - Staffordshire University\Concurrent Network Applications\CNA-Client-Server\Packets\obj\Debug\netstandard2.0\Packets.pdb

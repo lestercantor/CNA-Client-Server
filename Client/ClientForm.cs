@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Packets;
 
 namespace Client
 {
@@ -39,8 +40,12 @@ namespace Client
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            _client.SendMessage(InputField.Text);
-            UpdateChatWindow(InputField.Text);
+            ChatMessagePacket clientMessage = new ChatMessagePacket(InputField.Text);
+            if (InputField.Text != "")
+            {
+                _client.SendMessage(clientMessage);
+                UpdateChatWindow(InputField.Text);
+            }
             InputField.Text = null;
         }
     }
